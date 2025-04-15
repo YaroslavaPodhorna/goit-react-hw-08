@@ -15,9 +15,7 @@ export const register = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error("Registration error:", error);
-      return thunkAPI.rejectWithValue(
-        error.response.data.message || error.message
-      );
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
