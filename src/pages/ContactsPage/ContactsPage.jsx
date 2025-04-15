@@ -26,7 +26,7 @@ export default function ContactsPage() {
       {isLoading && <p className={css.loading}>Loading...</p>}
       {error && <p className={css.error}>{error}</p>}
       <SearchBox />
-      {contacts.length > 0 && <ContactList />}
+      {contacts.length > 0 && <ContactList contacts={contacts} />}
     </div>
   );
 }

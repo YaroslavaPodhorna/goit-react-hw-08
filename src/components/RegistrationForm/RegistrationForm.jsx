@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import * as Yup from "yup";
-// import css from "./RegistrationForm.module.css";
+import css from "./RegistrationForm.module.css";
 import { register } from "../../redux/auth/operations";
 
 const validationSchema = Yup.object().shape({
@@ -41,7 +41,7 @@ export default function RegistrationForm() {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form autoComplete="off">
+        <Form autoComplete="off" className={css.form}>
           <label htmlFor="name">
             Username
             <Field
@@ -51,12 +51,9 @@ export default function RegistrationForm() {
               placeholder="Enter your name"
               required
             />
-            <ErrorMessage
-              name="name"
-              component="div"
-              style={{ color: "red" }}
-            />
+            <ErrorMessage name="name" component="div" className={css.error} />
           </label>
+
           <label htmlFor="email">
             Email
             <Field
@@ -66,12 +63,9 @@ export default function RegistrationForm() {
               placeholder="Enter your email"
               required
             />
-            <ErrorMessage
-              name="name"
-              component="div"
-              style={{ color: "red" }}
-            />
+            <ErrorMessage name="email" component="div" className={css.error} />
           </label>
+
           <label htmlFor="password">
             Password
             <Field
@@ -81,8 +75,13 @@ export default function RegistrationForm() {
               placeholder="Enter your password"
               required
             />
+            <ErrorMessage
+              name="password"
+              component="div"
+              className={css.error}
+            />
           </label>
-          <ErrorMessage name="name" component="div" style={{ color: "red" }} />
+
           <button type="submit">Register</button>
         </Form>
       </Formik>
